@@ -11,7 +11,64 @@ namespace Aula03Colecoes
         static void Main(string[] args)
         {
             CriarLista();
-            ExibirLista();
+            ObterPorSalario();
+        }
+
+    public static void ObterPorSalario()
+    {
+        Console.WriteLine("Digite o valor mínimo: ");
+        decimal salario = decimal.Parse(Console.ReadLine());
+        lista = lista.FindAll(x => x.Salario >= salario);
+        ExibirLista();
+    }
+    public static void AdicionarFuncionario ()
+        {
+            Funcionario f = new Funcionario();
+
+            Console.WriteLine("Digite o ID: ");
+            f.Id = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o nome: ");
+            f.Nome = Console.ReadLine();
+
+            Console.WriteLine("Digite o CPF: ");
+            f.Cpf = Console.ReadLine();
+
+            Console.WriteLine("Digite o salário: ");
+            f.Salario = decimal.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a data de admissão: ");
+            f.DataAdmissao = DateTime.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o tipo de contratação:\n 1: CLT:\n 2: Aprendiz: ");
+            f.TipoFuncionario = (TipoFuncionarioEnum)decimal.Parse(Console.ReadLine());
+
+            if (string.IsNullOrEmpty(f.Nome))
+            {
+                Console.WriteLine("O nome deve ser preenchido!");
+                return;
+            }
+            else if (f.Salario == 0){
+                Console.WriteLine("O valor do salário não pode ser 0");
+                return;
+            }
+            else
+            {
+                lista.Add(f);
+                ExibirLista();
+            }
+        }
+        public static void ObterPorIdDigitado()
+        {
+            Console.WriteLine("Digite o Id: ");
+            int id = int.Parse(Console.ReadLine());
+            Funcionario fBusca = lista.Find(x => x.Id == id);
+
+            if (fBusca == null)
+                Console.WriteLine("Não encontrado.");
+            else
+                Console.WriteLine($"Funcionário encontrado: {fBusca.Nome}");
+
         }
 
         public static void ObterPorId()
@@ -36,7 +93,6 @@ namespace Aula03Colecoes
             }
             Console.WriteLine(dados);
         }
-
 
         public static void CriarLista()
         {
