@@ -11,8 +11,47 @@ namespace Aula03Colecoes
         static void Main(string[] args)
         {
             CriarLista();
-            ObterPorSalario();
+            SeletorDeMetodos();
         }
+
+    public static void SeletorDeMetodos()
+    {
+        Console.WriteLine("==================================================");
+        Console.WriteLine("****** Selet0r de Métodos ******");
+        Console.WriteLine("==================================================");
+        CriarLista();
+        int opcaoEscolhida = 0;
+        do
+        {
+            Console.WriteLine("Digite o código do método: ");
+            Console.WriteLine("1 - Obter por salário");
+            Console.WriteLine("2 - Adicionar funcionário");
+            Console.WriteLine("3 - Exibir lista");
+            Console.WriteLine("Pra sair do programa digite outro digito.");
+
+            opcaoEscolhida = int.Parse(Console.ReadLine());
+            string mensagem = string.Empty;
+            switch (opcaoEscolhida)
+            {
+                case 1:
+                    ObterPorSalario();
+                    break;
+                case 2:
+                    AdicionarFuncionario();
+                    break;
+                case 3:
+                    ExibirLista();
+                    break;
+                default:
+                    Console.WriteLine("Saindo do sistema...");
+                    break;
+            }
+
+        } while (opcaoEscolhida >=1 && opcaoEscolhida <= 3);
+        Console.WriteLine("==================================================");
+        Console.WriteLine("*valeu.................................*");
+        Console.WriteLine("==================================================");
+    }
 
     public static void ObterPorSalario()
     {
